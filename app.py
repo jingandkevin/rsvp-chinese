@@ -148,6 +148,10 @@ def before_request():
 def load_user(id):
     return Admin.query.get(int(id))
 
+@app.route('/')
+def index():
+	return redirect(url_for('rsvp'))
+
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
     # create an instance of the rsvp form
