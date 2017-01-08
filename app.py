@@ -167,10 +167,6 @@ def rsvp():
         u.plusone = request.form['plusone']
         u.plusonename = request.form['plusonename']
         u.message = request.form['message']
-        u.street = request.form['street']
-        u.city = request.form['city']
-        u.state = request.form['state']
-        u.zipcd = request.form['zipcd']
         db.session.add(u)
         db.session.commit()
         login_user(u)

@@ -78,8 +78,7 @@
         <div class="row">
             <div id="transit" class="col-sm-6 col-sm-offset-3" >
                 <h2 class="module-title font-alt"></h2>
-                <div class="module-subtitle font-serif">
-                    RSVP<br> 敬請回复
+                <div class="module-subtitle font-serif">RSVP<br>敬請回复
                 </div>
             </div>
         </div>
@@ -97,22 +96,15 @@
                 <form action="" method="post" class="form-horizontal">
                     {{ form.hidden_tag() }}
                     <div class="form-group"><div class="col-md-8"><label>Will you be attending? 你會參加嗎?</label></div><div class="col-md-4">{{ form.attending(class="form-control") }}</div></div>
-                    <br>
                     <div class="form-group"><div class="col-md-12">{{ form.name(size=60,class="form-control", placeholder="Name 名稱") }}</div></div>
-                    <div class="form-group"><div class="col-md-12">{{ form.email(size=60,class="form-control", placeholder="Email 電子郵件") }}</div></div>
-                    <div class="form-group"><div class="col-md-12">{{ form.street(size=60,class="form-control", placeholder="Street 街道地址") }}</div></div>
-                    <div class="form-group">
-                    <div class="col-sm-6">{{ form.city(class="form-control", placeholder="City 城市") }}</div>
-                    <div class="col-sm-3">{{ form.state(class="form-control", placeholder="State 州") }}</div>
-                    <div class="col-sm-3">{{ form.zipcd(size=7,class="form-control", placeholder="Zip 郵政編碼") }}</div>
-                    </div>
                     <br>
                     <div class="form-group"><div class="col-md-8"><label>Will you be bringing anyone? 你會帶任何人嗎?</label></div><div class="col-md-4">{{ form.plusone(class="form-control") }}</div></div>
-                    <br>
                     <div class="form-group"><div class="col-md-12">{{ form.plusonename(size=60,class="form-control", placeholder="Name of your +1 您帶來的人的姓名") }}</div></div>
                     <br>
+                    <div class="form-group"><div class="col-md-12">{{ form.email(size=60,class="form-control", placeholder="Email 電子郵件") }}</div></div>
+                    <br>
                     <div class="form-group"><div class="col-md-12">{{ form.message(class="form-control", rows="4", placeholder="Your Message.") }}</div></div>
-                    <div class="form-group"><div class="col-md-12"><input type="submit" value="Submit" class="btn btn-success btn-block btn-round btn-sm has-spinner"></div></div>
+                    <div class="form-group"><div class="col-md-12"><input type="submit" value="GO" class="btn btn-success btn-block btn-round btn-sm has-spinner"></div></div>
                 </form>
             </div>
         </div>
