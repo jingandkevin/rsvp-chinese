@@ -1,0 +1,151 @@
+% import "bootstrap/utils.html" as utils %}
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Jing &amp; Kevin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jing and Kevin Wedding Website - February 19, 2017 in Brooklyn, NY.">
+    <meta name="author" content="Kevin Wu h/t Rafael Campos">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Third-party css libraries go here -->
+    <link href="{{ url_for('static', filename="css/bootstrap-switch.min.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/simpletextrotator.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/et-line-font.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/magnific-popup.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/flexslider.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/owl.carousel.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/animate.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/style.css") }}" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- Navigation here -->
+
+ <!-- Navigation start -->
+ <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+   <div class="container">
+     <a class="navbar-brand" href="//jingandkevin.github.io"> KW <i class="fa fa-fw"> &#xf004; </i> JY </a>
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="custom-collapse">
+         <ul class="nav navbar-nav navbar-right">
+         <!--
+             <li><a href="//jingandkevin.github.io/story/" class="section-scroll">Our Story</a></li>-->
+             <li><a href="//jingandkevin.github.io/event/" class="section-scroll">The Events</a></li>
+             <li><a href="//jingandkevin.github.io/travel/" class="section-scroll">Travel Plans</a></li> <!--
+             <li><a href="//jingandkevin.github.io/travel/registry/" class="section-scroll">Registry</a></li>-->
+             <li><a href="/rsvp/" class="section-scroll">RSVP</a></li>
+             {% if g.user.is_authenticated %}
+             <li><a href="{{ url_for('logout') }}" class="section-scroll">Logout</a></li>
+             {% endif %}
+         </ul>
+     </div>
+   </div>
+ </nav>
+ <!-- Navigation end -->
+<section class="module home-full-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h3 class="module-title font-alt mb-0">{{ guestcount | safe }} people are attending</h3>
+            </div>
+        </div>
+        <!-- .row -->
+    </div>
+</section>
+<section class="module pt-0 pb-0">
+	<div class="container">
+		<table class="table-condensed table-striped" cellspacing="0" width="100%">
+		    <thead>
+		        <tr>
+		            <th>Name</th>
+		            <th>Email</th>
+                <th>Attending</th>
+		            <th>Plus One</th>
+                <th>Plus One Name</th>
+                <th>Message</th>
+		        </tr>
+		    </thead>
+			<tbody>
+				{% for guest in guests %}
+				<tr>
+					<td>{{ guest.name | safe }}</td>
+					<td>{{ guest.email | safe }}</td>
+          <td>{{ guest.attending | safe }}</td>
+          <td>{{ guest.plusone | safe }}</td>
+					<td>{{ guest.plusonename | safe }}</td>
+          <td>{{ guest.message | safe }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+    <!-- Le javascript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- Latest JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Your stuff: Third-party javascript libraries go here -->
+    <script src="{{ url_for('static', filename="js/jquery.mb.YTPlayer.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/appear.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.simple-text-rotator.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jqBootstrapValidation.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/isotope.pkgd.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/imagesloaded.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.flexslider-min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.magnific-popup.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.fitvids.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/smoothscroll.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/wow.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/owl.carousel.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/custom.js") }}"></script>
+
+<script type="text/javascript" src="../static/js/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('.clock').countdown({
+        date: "February 19, 2017",
+        render: function(data) {
+            $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div>");
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+$(function() {
+    $('#code_form').find('input,textarea').jqBootstrapValidation();
+});
+</script>
+
+</body>
+
+</html>

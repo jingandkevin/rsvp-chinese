@@ -1,0 +1,264 @@
+{% import "bootstrap/utils.html" as utils %}
+<!DOCTYPE html>
+<html lang="en" ng-app>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Jing &amp; Kevin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jing and Kevin Wedding Website - February 19, 2017 in Brooklyn, NY.">
+    <meta name="author" content="Kevin Wu h/t Rafael Campos">
+    <link rel="icon" href="/static/images/favicon.ico">
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Third-party css libraries go here -->
+    <link href="{{ url_for('static', filename="css/bootstrap-switch.min.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/simpletextrotator.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/et-line-font.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/magnific-popup.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/flexslider.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/owl.carousel.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/animate.css") }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename="css/style.css") }}" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- Navigation here -->
+
+ <!-- Navigation start -->
+ <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+   <div class="container">
+     <a class="navbar-brand" href="//jingandkevin.github.io"> KW <i class="fa fa-fw"> &#xf004; </i> JY </a>
+     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#custom-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="custom-collapse">
+         <ul class="nav navbar-nav navbar-right">
+         <!--
+             <li><a href="//jingandkevin.github.io/story/" class="section-scroll">Our Story</a></li>-->
+             <li><a href="//jingandkevin.github.io/event/" class="section-scroll">The Events</a></li>
+             <li><a href="//jingandkevin.github.io/travel/" class="section-scroll">Travel Plans</a></li>
+             <li><a href="//jingandkevin.github.io/registry/" class="section-scroll">Registry</a></li>
+             <li><a href="/rsvp/" class="section-scroll">RSVP</a></li>
+
+         </ul>
+     </div>
+   </div>
+ </nav>
+ <!-- Navigation end -->
+
+<section class="module bg-dark bg-dark-60 home-full-height" data-background="{{ url_for('static', filename="images/IMG_9515.jpg") }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <h1 class="module-title font-alt mb-0">RSVP</h1>
+            </div>
+        </div>
+        <!-- .row -->
+    </div>
+</section>
+<section class="module bg-dark-90 pt-0 pb-0">
+    <div class="container">
+        <div class="row">
+            <div id="transit" class="col-sm-6 col-sm-offset-3" >
+                <h2 class="module-title font-alt"></h2>
+                <div class="module-subtitle font-serif">
+                    RSVP has closed <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="module-icon">
+                    <img width="48x" src="{{ url_for('static', filename="images/wedding-icons_computer.svg") }}" />
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-12">
+                {{ utils.flashed_messages(container=False, dismissible=True) }}
+                <form action="" method="post" class="form-horizontal">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group"><div class="col-md-5"><label>Will you be attending?</label></div><div class="col-md-7">{{ form.attending(class="form-control",disabled=true) }}</div></div>
+                    <br>
+                    <div class="form-group"><div class="col-md-12">{{ form.name(size=60,class="form-control", placeholder="Name",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.email(size=60,class="form-control", placeholder="Email",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.street(size=60,class="form-control", placeholder="Street",disabled=true) }}</div></div>
+                    <div class="form-group">
+                    <div class="col-sm-7">{{ form.city(class="form-control", placeholder="City",disabled=true) }}</div>
+                    <div class="col-sm-2">{{ form.state(class="form-control", placeholder="State",disabled=true) }}</div>
+                    <div class="col-sm-3">{{ form.zipcd(size=7,class="form-control", placeholder="Zip",disabled=true) }}</div>
+                    </div>
+                    <br>
+                    <div class="form-group"><div class="col-md-5"><label>Will you be bringing anyone?</label></div><div class="col-md-7">{{ form.plusone(class="form-control",disabled=true) }}</div></div>
+                    <br>
+                    <div class="form-group"><div class="col-md-12">{{ form.plusonename(size=60,class="form-control", placeholder="Name of your +1",disabled=true) }}</div></div>
+                    <br>
+                    <div class="form-group"><div class="col-md-12">{{ form.message(class="form-control", rows="4", placeholder="Your Message. Please let us know if you plan on bringing small children or anyone under 21 and we will try our best to accommodate you.",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-12"><input type="submit" value="Submit" class="btn btn-success btn-block btn-round btn-sm has-spinner" disabled></div></div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                 <blockquote class="testimonial-text font-alt">We are so excited to see everyone at the wedding.
+                                    <br> Let us know if you need to change your RSVP. </blockquote>
+            </div>
+        </div>
+        <!-- .row -->
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="testimonial-author">
+                    <div class="testimonial-caption font-alt">
+                        <div class="testimonial-title">
+                            <div class="clock">
+                            </div>
+                        </div>
+                        <div class="testimonial-descr">Jing &amp; Kevin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+</section>
+<!-- Testimonials end -->
+
+    <!-- Scroll-up -->
+    <div class="scroll-up">
+        <a class="fa fa-angle-double-up" href="#totop" style="font-style: italic"></a>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <section id="contact" class="module">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2 class="module-title font-alt">Get in touch</h2>
+                            </div>
+                        </div>
+                        <!-- .row -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <form id="contact-form" role="form" novalidate="">
+                                    <input type='hidden' name='csrfmiddlewaretoken' value='dFVRHIreTXpjCk0xoQ6CH5rlQ5QK076G' />
+                                    <div class="form-group">
+                                        <label class="sr-only" for="cname">Name</label>
+                                        <input type="text" id="cname" class="form-control" name="cname" placeholder="Name*" required="" data-validation-required-message="Please enter your name.">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="cemail">Your Email</label>
+                                        <input type="email" id="cemail" name="cemail" class="form-control" placeholder="Your E-mail*" required="" data-validation-required-message="Please enter your email address.">
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="cmessage" name="cmessage" rows="7" placeholder="Message*" required="" data-validation-required-message="Please enter your message."></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="g-recaptcha" data-sitekey="6Ld9AwwTAAAAAEoK-dzE4T7IU6ip5JCshlz-5ydE">
+                                    </div>
+                                    <div id="captcha-message" class="ajax-response font-alt"></div>
+                                    <br>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-block btn-round btn-d">Submit</button>
+                                    </div>
+                                </form>
+                                <!-- Ajax response -->
+                                <div id="contact-response" class="ajax-response font-alt"></div>
+                            </div>
+                        </div>
+                        <!-- .row -->
+                    </div>
+                </section>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer start -->
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="copyright font-alt">Drop us a line <a href="mailto:jing2yang@gmail.com">here!</a></p>
+        </div>
+        <!-- .row -->
+    </div>
+</footer>
+<!-- Footer end -->
+
+    <!-- Le javascript
+================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- Latest JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Your stuff: Third-party javascript libraries go here -->
+    <script src="{{ url_for('static', filename="js/jquery.mb.YTPlayer.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/appear.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.simple-text-rotator.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jqBootstrapValidation.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/isotope.pkgd.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/imagesloaded.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.flexslider-min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.magnific-popup.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/jquery.fitvids.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/smoothscroll.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/wow.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/owl.carousel.min.js") }}"></script>
+    <script src="{{ url_for('static', filename="js/custom.js") }}"></script>
+
+<script type="text/javascript" src="../static/js/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('.clock').countdown({
+        date: "February 19, 2017",
+        render: function(data) {
+            $(this.el).html("<div>" + this.leadingZeros(data.days, 3) + " <span>days</span></div>");
+        }
+    });
+});
+</script>
+<script type="text/javascript">
+$(function() {
+    $('#code_form').find('input,textarea').jqBootstrapValidation();
+});
+</script>
+
+</body>
+
+</html>
