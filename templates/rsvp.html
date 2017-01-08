@@ -55,10 +55,6 @@
      <div class="collapse navbar-collapse" id="custom-collapse">
          <ul class="nav navbar-nav navbar-right">
          <!--
-             <li><a href="//jingandkevin.github.io/story/" class="section-scroll">Our Story</a></li>-->
-             <li><a href="//jingandkevin.github.io/event/" class="section-scroll">The Events</a></li>
-             <li><a href="//jingandkevin.github.io/travel/" class="section-scroll">Travel Plans</a></li>
-             <li><a href="//jingandkevin.github.io/registry/" class="section-scroll">Registry</a></li>
              <li><a href="/rsvp/" class="section-scroll">RSVP</a></li>
 
          </ul>
@@ -83,7 +79,7 @@
             <div id="transit" class="col-sm-6 col-sm-offset-3" >
                 <h2 class="module-title font-alt"></h2>
                 <div class="module-subtitle font-serif">
-                    RSVP has closed <br>
+                    RSVP<br> 敬請回复
                 </div>
             </div>
         </div>
@@ -100,30 +96,32 @@
                 {{ utils.flashed_messages(container=False, dismissible=True) }}
                 <form action="" method="post" class="form-horizontal">
                     {{ form.hidden_tag() }}
-                    <div class="form-group"><div class="col-md-5"><label>Will you be attending?</label></div><div class="col-md-7">{{ form.attending(class="form-control",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-8"><label>Will you be attending? 你會參加嗎?</label></div><div class="col-md-4">{{ form.attending(class="form-control") }}</div></div>
                     <br>
-                    <div class="form-group"><div class="col-md-12">{{ form.name(size=60,class="form-control", placeholder="Name",disabled=true) }}</div></div>
-                    <div class="form-group"><div class="col-md-12">{{ form.email(size=60,class="form-control", placeholder="Email",disabled=true) }}</div></div>
-                    <div class="form-group"><div class="col-md-12">{{ form.street(size=60,class="form-control", placeholder="Street",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.name(size=60,class="form-control", placeholder="Name 名稱") }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.email(size=60,class="form-control", placeholder="Email 電子郵件") }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.street(size=60,class="form-control", placeholder="Street 街道地址") }}</div></div>
                     <div class="form-group">
-                    <div class="col-sm-7">{{ form.city(class="form-control", placeholder="City",disabled=true) }}</div>
-                    <div class="col-sm-2">{{ form.state(class="form-control", placeholder="State",disabled=true) }}</div>
-                    <div class="col-sm-3">{{ form.zipcd(size=7,class="form-control", placeholder="Zip",disabled=true) }}</div>
+                    <div class="col-sm-6">{{ form.city(class="form-control", placeholder="City 城市") }}</div>
+                    <div class="col-sm-3">{{ form.state(class="form-control", placeholder="State 州") }}</div>
+                    <div class="col-sm-3">{{ form.zipcd(size=7,class="form-control", placeholder="Zip 郵政編碼") }}</div>
                     </div>
                     <br>
-                    <div class="form-group"><div class="col-md-5"><label>Will you be bringing anyone?</label></div><div class="col-md-7">{{ form.plusone(class="form-control",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-8"><label>Will you be bringing anyone? 你會帶任何人嗎?</label></div><div class="col-md-4">{{ form.plusone(class="form-control") }}</div></div>
                     <br>
-                    <div class="form-group"><div class="col-md-12">{{ form.plusonename(size=60,class="form-control", placeholder="Name of your +1",disabled=true) }}</div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.plusonename(size=60,class="form-control", placeholder="Name of your +1 您帶來的人的姓名") }}</div></div>
                     <br>
-                    <div class="form-group"><div class="col-md-12">{{ form.message(class="form-control", rows="4", placeholder="Your Message. Please let us know if you plan on bringing small children or anyone under 21 and we will try our best to accommodate you.",disabled=true) }}</div></div>
-                    <div class="form-group"><div class="col-md-12"><input type="submit" value="Submit" class="btn btn-success btn-block btn-round btn-sm has-spinner" disabled></div></div>
+                    <div class="form-group"><div class="col-md-12">{{ form.message(class="form-control", rows="4", placeholder="Your Message.") }}</div></div>
+                    <div class="form-group"><div class="col-md-12"><input type="submit" value="Submit" class="btn btn-success btn-block btn-round btn-sm has-spinner"></div></div>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                 <blockquote class="testimonial-text font-alt">We are so excited to see everyone at the wedding.
-                                    <br> Let us know if you need to change your RSVP. </blockquote>
+                 <blockquote class="testimonial-text font-alt">
+                   Let us know if you need to change your RSVP. <br>
+                   讓我們知道如果您需要更改您的回复.
+                 </blockquote>
             </div>
         </div>
         <!-- .row -->
@@ -212,7 +210,7 @@
     <div class="container">
         <div class="row">
           <div class="col-sm-6">
-            <p class="copyright font-alt">Drop us a line <a href="mailto:jing2yang@gmail.com">here!</a></p>
+            <p class="copyright font-alt">Drop us a line here! 電子郵件 <a href="mailto:jing2yang@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></p>
         </div>
         <!-- .row -->
     </div>
