@@ -170,7 +170,8 @@ def rsvp():
         db.session.add(u)
         db.session.commit()
         login_user(u)
-        return redirect('https://jingandkevin.github.io/travel/')
+		flash('RSVP Received')
+        return redirect(url_for('rsvp'))
 
     else:
         for fieldName, errorMessages in form.errors.iteritems():
@@ -188,7 +189,8 @@ def decline():
 	u.message = request.remote_addr + ',' + request.user_agent.platform + ',' + request.user_agent.browser
 	db.session.add(u)
 	db.session.commit()
-	return redirect('https://jingandkevin.github.io/sorry/')
+	flash('RSVP Received')
+	return redirect(url_for('rsvp'))
 # jingandkevin.pythonanywhere.com/decline?name=FIRST%20LAST&email=EMAIL%40GMAIL%2Ecom
 
 @app.route('/guestlist')
