@@ -21,10 +21,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 # configuration settings
 app.config.update(dict(
-	WTF_CSRF_ENABLED = True,
+    WTF_CSRF_ENABLED = True,
     SQLALCHEMY_DATABASE_URI='sqlite:///' + os.path.join(basedir, 'app.db'),
     SQLALCHEMY_TRACK_MODIFICATIONS = False,
-	BOOTSTRAP_SERVE_LOCAL = True,
+    BOOTSTRAP_SERVE_LOCAL = True,
     SECRET_KEY='HuiphI5wmXy1pyN5',
 ))
 
@@ -62,9 +62,9 @@ class RSVPForm(Form):
     submit = SubmitField('Submit')
 
 class LoginForm(Form):
-	user = StringField('', validators=[DataRequired()])
-	password = PasswordField('', validators=[DataRequired()])
-	submit = SubmitField('Submit')
+    user = StringField('', validators=[DataRequired()])
+    password = PasswordField('', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 ############################################
 #
@@ -110,29 +110,29 @@ class User(db.Model):
             return str(self.id)  # python 3
 
 class Admin(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	user = db.Column(db.String(64), index=True, unique=True)
+    id = db.Column(db.Integer, primary_key=True)
+    user = db.Column(db.String(64), index=True, unique=True)
 
-	def __repr__(self):
-		return self.user
+    def __repr__(self):
+    return self.user
 
-	@property
-	def is_authenticated(self):
-		return True
+    @property
+    def is_authenticated(self):
+    return True
 
-	@property
-	def is_active(self):
-		return True
+    @property
+    def is_active(self):
+    return True
 
-	@property
-	def is_anonymous(self):
-		return False
+    @property
+    def is_anonymous(self):
+    return False
 
-	def get_id(self):
-		try:
-			return unicode(self.id)
-		except NameError:
-			return str(self.id)
+    def get_id(self):
+    try:
+    return unicode(self.id)
+    except NameError:
+    return str(self.id)
 
 ############################################
 #
@@ -150,7 +150,7 @@ def load_user(id):
 
 @app.route('/')
 def index():
-	return redirect(url_for('rsvp'))
+    return redirect(url_for('rsvp'))
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
@@ -170,7 +170,7 @@ def rsvp():
         db.session.add(u)
         db.session.commit()
         login_user(u)
-		flash('RSVP Received')
+        flash('RSVP Received')
         return redirect(url_for('rsvp'))
 
     else:
@@ -178,46 +178,46 @@ def rsvp():
             for err in errorMessages:
                 flash(fieldName.capitalize() + ' ' + err[-12:], 'warning')
         return render_template('rsvp.html', title='RSVP', form=form)
-	return render_template('rsvp.html', title='RSVP', form=form)
+    return render_template('rsvp.html', title='RSVP', form=form)
 
 @app.route('/decline')
 def decline():
-	u = User()
-	u.name = request.args.get('name')
-	u.email = request.args.get('email')
-	u.attending = u.plusone = 0
-	u.message = request.remote_addr + ',' + request.user_agent.platform + ',' + request.user_agent.browser
-	db.session.add(u)
-	db.session.commit()
-	flash('RSVP Received')
-	return redirect(url_for('rsvp'))
+    u = User()
+    u.name = request.args.get('name')
+    u.email = request.args.get('email')
+    u.attending = u.plusone = 0
+    u.message = request.remote_addr + ',' + request.user_agent.platform + ',' + request.user_agent.browser
+    db.session.add(u)
+    db.session.commit()
+    flash('RSVP Received')
+    return redirect(url_for('rsvp'))
 # jingandkevin.pythonanywhere.com/decline?name=FIRST%20LAST&email=EMAIL%40GMAIL%2Ecom
 
 @app.route('/guestlist')
 @login_required
 def guestlist():
-	guests = User.query.all()
-	guestcount = 0
-	for guest in guests:
-		if guest.attending:
-			guestcount += 1
-		if guest.plusone:
-			guestcount += 1
-	return render_template('guestlist.html', guests=guests, guestcount=guestcount)
+    guests = User.query.all()
+    guestcount = 0
+    for guest in guests:
+    if guest.attending:
+    guestcount += 1
+    if guest.plusone:
+    guestcount += 1
+    return render_template('guestlist.html', guests=guests, guestcount=guestcount)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-	form = LoginForm()
-	if form.validate_on_submit():
-		user = Admin.query.filter_by(user=request.form['user']).first()
-		if user is not None and request.form['password'] == 'stinky':
-			login_user(user)
-			flash('Logged in successfully.')
-			return redirect(url_for('guestlist'))
-		else:
-			flash('Logged in successfully.')
-			return render_template('login.html', form=form)
-	return render_template('login.html', form=form)
+    form = LoginForm()
+    if form.validate_on_submit():
+    user = Admin.query.filter_by(user=request.form['user']).first()
+    if user is not None and request.form['password'] == 'stinky':
+    login_user(user)
+    flash('Logged in successfully.')
+    return redirect(url_for('guestlist'))
+    else:
+    flash('Logged in successfully.')
+    return render_template('login.html', form=form)
+    return render_template('login.html', form=form)
 
 @app.route('/logout')
 def logout():
@@ -227,4 +227,4 @@ def logout():
 
 if __name__ == '__main__':
     # app.run(host='0.0.0.0', port=31337)
-	app.run(debug=True)
+    app.run(debug=True)
