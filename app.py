@@ -114,25 +114,25 @@ class Admin(db.Model):
     user = db.Column(db.String(64), index=True, unique=True)
 
     def __repr__(self):
-    return self.user
+        return self.user
 
     @property
     def is_authenticated(self):
-    return True
+        return True
 
     @property
     def is_active(self):
-    return True
+        return True
 
     @property
     def is_anonymous(self):
-    return False
+        return False
 
     def get_id(self):
-    try:
-    return unicode(self.id)
-    except NameError:
-    return str(self.id)
+        try:
+            return unicode(self.id)
+        except NameError:
+            return str(self.id)
 
 ############################################
 #
@@ -199,24 +199,24 @@ def guestlist():
     guests = User.query.all()
     guestcount = 0
     for guest in guests:
-    if guest.attending:
-    guestcount += 1
-    if guest.plusone:
-    guestcount += 1
+        if guest.attending:
+            guestcount += 1
+        if guest.plusone:
+            guestcount += 1
     return render_template('guestlist.html', guests=guests, guestcount=guestcount)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-    user = Admin.query.filter_by(user=request.form['user']).first()
+        user = Admin.query.filter_by(user=request.form['user']).first()
     if user is not None and request.form['password'] == 'stinky':
-    login_user(user)
-    flash('Logged in successfully.')
-    return redirect(url_for('guestlist'))
+        login_user(user)
+        flash('Logged in successfully.')
+        return redirect(url_for('guestlist'))
     else:
-    flash('Logged in successfully.')
-    return render_template('login.html', form=form)
+        flash('Incorrect password')
+        return render_template('login.html', form=form)
     return render_template('login.html', form=form)
 
 @app.route('/logout')
